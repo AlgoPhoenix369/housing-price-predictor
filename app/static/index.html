@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Housing Price Predictor</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1> Housing Price Predictor</h1>
+      <p class="subtitle">Predict a home's price in Washington State (ZIP 98001–99001)</p>
+    </header>
+
+    <section class="card">
+      <h2>Property details</h2>
+      <form id="predict-form" class="grid">
+        <label>I want to
+          <select name="purpose">
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
+        </label>
+        <label>
+          <span>ZIP code <span class="info" tabindex="0" title="Accepted range: 98001 to 99001 (Washington State). ZIP codes outside the model's training data are rejected.">ⓘ</span></span>
+          <input type="number" name="zipcode" min="98001" max="99001" step="1" value="98001" required title="Accepted range: 98001 to 99001 (Washington State)" />
+        </label>
+        <label>Living area (sqft)
+          <input type="number" name="sqft_living" min="200" max="10000" step="1" value="1500" required />
+        </label>
+        <label>Bedrooms
+          <input type="number" name="no_of_bedrooms" min="0" max="10" step="1" value="3" required />
+        </label>
+        <label>Bathrooms
+          <input type="number" name="no_of_bathrooms" min="0" max="10" step="0.5" value="2" required />
+        </label>
+        <label>Lot size (sqft)
+          <input type="number" name="sqft_lot" min="500" max="500000" step="1" value="5000" required />
+        </label>
+        <label>Floors
+          <input type="number" name="no_of_floors" min="1" max="4" step="0.5" value="1" required />
+        </label>
+        <label>House age (years)
+          <input type="number" name="house_age" min="0" max="150" step="1" value="20" required />
+        </label>
+        <button type="submit" id="predict-button" class="primary">Predict price</button>
+      </form>
+      <p id="error" class="error" hidden></p>
+    </section>
+
+    <section id="result" class="card result" hidden>
+      <h2>Predicted price</h2>
+      <p id="result-price" class="price"></p>
+      <p id="result-range" class="muted"></p>
+      <p class="muted small">Range: predicted price ±$20,000.</p>
+    </section>
+
+    <section class="card">
+      <div class="history-header">
+        <h2>Your prediction history</h2>
+        <button id="clear-history" class="secondary" type="button" hidden>Clear history</button>
+      </div>
+      <p id="history-summary" class="muted"></p>
+      <p id="history-empty" class="muted">No predictions yet. Make your first one above.</p>
+      <div class="table-wrap">
+        <table id="history-table" hidden>
+          <thead>
+            <tr>
+              <th>Date</th><th>Intent</th><th>ZIP</th><th>Area</th>
+              <th>Beds / Baths</th><th>Floors</th><th>Age</th><th>Predicted</th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      <div class="history-actions">
+        <button id="show-more" class="secondary" type="button" hidden>Show more</button>
+        <button id="show-less" class="secondary" type="button" hidden>Show less</button>
+      </div>
+    </section>
+  </main>
+  <script src="/script.js"></script>
+</body>
+</html>
