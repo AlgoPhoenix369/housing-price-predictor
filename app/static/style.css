@@ -1,0 +1,70 @@
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #6366f1;
+  --border: #334155;
+  --error: #f87171;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+header { text-align: center; margin-bottom: 1.5rem; }
+h1 { margin: 0 0 0.25rem; }
+h2 { margin: 0 0 1rem; font-size: 1.15rem; }
+.subtitle, .muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+label { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.9rem; color: var(--muted); }
+
+input, select {
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+button { font-size: 1rem; border-radius: 8px; padding: 0.65rem 1rem; cursor: pointer; border: 1px solid transparent; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+button.primary { background: var(--accent); color: #fff; align-self: end; }
+button.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+
+.error { color: var(--error); margin: 0.75rem 0 0; }
+.price { font-size: 2.2rem; font-weight: 700; margin: 0.25rem 0; }
+
+.history-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.history-header h2 { margin: 0; }
+.history-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; }
+
+
+/* hover to see the accepted range */
+.info {
+  cursor: help;
+  color: var(--accent);
+  font-weight: 700;
+}
